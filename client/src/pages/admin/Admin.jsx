@@ -1,3 +1,5 @@
+import MovieList from "./MovieList";
+
 function Admin() {
 
     const tabItem = [
@@ -5,11 +7,6 @@ function Admin() {
       key: "1",
       label: "Movies",
       children: <MovieList />
-    },
-    {
-      key: "2",
-      label: "Theatres",
-      children: <TheatresTable />
     }
   ]
 
