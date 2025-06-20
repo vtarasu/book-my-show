@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { getAllMovies } from "../../api/movie";
 import { useDispatch } from "react-redux";
 import { showLoader, hideLoader } from "../../redux/loaderslice";
+import MovieForm from "./MovieForm";
+import DeleteMovie from "./DeleteMovie";
 
 function MovieList() {
     const fakeMovies = [
@@ -57,10 +59,17 @@ function MovieList() {
             render: (text, record) => {
                 return(
                     <div>
-                        <Button>
+                        <Button onClick={() => {
+                            setSelectedMovie(record);
+                            setIsModalOpen(true);
+                            setFormType("edit");
+                        }}>
                             <EditOutlined />
                         </Button>
-                        <Button>
+                        <Button onClick={() => {
+                            setSelectedMovie(record);
+                            setIsDeleteModalOpen(true);
+                        }}>
                             <DeleteOutlined />
                         </Button>
                     </div>
@@ -71,6 +80,10 @@ function MovieList() {
 
     const [movies, setMovies] = useState(fakeMovies);
     const dispatch = useDispatch();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [selectedMovie, setSelectedMovie] = useState(null);
+    const [formtype, setFormType] = useState("add");
 
 
     useEffect(() => {
@@ -80,6 +93,7 @@ function MovieList() {
     const getMoviesData = async () => {
         try {
             dispatch(showLoader());
+            console.log("Fetching movies data...");
             const response = await getAllMovies();
             const allMovies = response.data;
             setMovies(
@@ -99,11 +113,32 @@ function MovieList() {
     return (
         <>
             <div className="d-flex justify-content-end">
-                <Button>
+                <Button onClick={() => {
+                    setIsModalOpen(true);
+                    setFormType("add");
+                    setSelectedMovie(null);
+                }}>
                     Add Movie
                 </Button>
 
                 <Table dataSource={movies} columns={tableHeaders} />
+                {
+                    isModalOpen && (
+                        <MovieForm >
+
+                        </MovieForm>
+                    )
+                }
+                {
+                    isDeleteModalOpen && (
+                        <DeleteMovie isDeleteModalOpen={isDeleteModalOpen} 
+                             setIsDeleteModalOpen={setIsDeleteModalOpen}
+                             getMoviesData={getMoviesData} 
+                             selectedMovie={selectedMovie}
+                             setSelectedMovie={setSelectedMovie}>
+                        </DeleteMovie>
+                    )
+                }
             </div>
         </>
     );

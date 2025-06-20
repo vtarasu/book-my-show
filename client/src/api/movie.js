@@ -9,3 +9,13 @@ export const getAllMovies = async () => {
         throw error;
     }
 }
+
+export const deleteMovie = async (id) => {
+    try {
+        const response = await axiosInstance.delete(`/api/movies/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting movie:', error);
+        throw error;
+    }
+}
