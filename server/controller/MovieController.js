@@ -45,6 +45,7 @@ const getMovieById = async(req, res) => {
 
 const updateMovieById = async(req, res) => {
     try {
+        console.log("Updating movie with ID:", req.params.id, "with data:", req.body);
         const movieId = req.params.id;
         const { title, description, releaseDate, duration, genre, poster } = req.body;
         const movie = await movieModel.findByIdAndUpdate(movieId, {
@@ -54,7 +55,7 @@ const updateMovieById = async(req, res) => {
             duration,
             genre,
             poster
-        }, { new: true });  
+        }, { new: false });  
         if (!movie) {
             return res.status(404).json({ message: 'Movie not found' });
         }

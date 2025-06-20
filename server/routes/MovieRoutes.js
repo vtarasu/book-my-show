@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/add', addMovie);
 router.get('/', getAllMovies);
 router.get('/:id', getMovieById);
-router.patch('/:id', updateMovieById);
+router.put('/:id', updateMovieById);
 router.delete('/:id', deleteMovieById);
 
 module.exports = router;

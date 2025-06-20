@@ -19,3 +19,23 @@ export const deleteMovie = async (id) => {
         throw error;
     }
 }
+
+export const addMovie = async (movieData) => {
+    try {
+        const response = await axiosInstance.post('/api/movies/add', movieData);
+        return {success: true, date : response.data};
+    } catch (error) {
+        console.error('Error adding movie:', error);
+        throw error;
+    }
+}
+
+export const updateMovie = async (id, movieData) => {
+    try {
+        const response = await axiosInstance.put(`/api/movies/${id}`, movieData);
+        return {success: true, date : response.data};
+    } catch (error) {
+        console.error('Error updating movie:', error);
+        throw error;
+    }
+}

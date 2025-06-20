@@ -42,7 +42,7 @@ function MovieList() {
             title: 'Release Date',
             dataIndex: 'releaseDate',
             render: (text, data) => {
-                return moment(data.releaseDate).format("DD-MM-YYYY");
+                return moment(data.releaseDate).format("MM-DD-YY");
             } 
         },
         {
@@ -124,8 +124,13 @@ function MovieList() {
                 <Table dataSource={movies} columns={tableHeaders} />
                 {
                     isModalOpen && (
-                        <MovieForm >
-
+                        <MovieForm isModalOpen={isModalOpen}
+                            setIsModalOpen={setIsModalOpen}
+                            selectedMovie={selectedMovie}
+                            setSelectedMovie={setSelectedMovie}
+                            getMoviesData={getMoviesData}
+                            formType={formtype}
+                        >
                         </MovieForm>
                     )
                 }
