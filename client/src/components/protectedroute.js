@@ -1,6 +1,6 @@
 import { HomeOutlined, LogoutOutlined, ProfileOutlined, UserOutlined } from '@ant-design/icons';
 import {useDispatch, useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import { useEffect } from 'react';
 import { showLoader, hideLoader } from '../redux/loaderslice';
@@ -10,14 +10,14 @@ import React from 'react';
 
 const { Header } = Layout;
 
+const STORAGE_TOKEN = 'jwtToken';
 function ProtectedRoute({children}) {
     const {user} = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        const jwtToken = localStorage.getItem('jwtToken');
-        console.log('JWT Token in protected route:', jwtToken);
+        const jwtToken = localStorage.getItem(STORAGE_TOKEN);
         if (!jwtToken) {
             navigate('/login');
         } else {
@@ -30,9 +30,7 @@ function ProtectedRoute({children}) {
         try {
             dispatch(showLoader());
             const response = await currentUser();
-            console.log('response of current user:', response);
-            dispatch(SetUser(response.data));
-            // console.log(user.username);
+            dispatch(SetUser(response));
             dispatch(hideLoader());
         } catch (error) {
             console.error('Error fetching current user:', error);
@@ -55,7 +53,7 @@ function ProtectedRoute({children}) {
                 {
                     label: (
                         <span onClick={() => {
-                            if(user.role ==='admin') {
+                            if(user.role === 'admin') {
                                 navigate('/admin');
                             } else if(user.role === 'user') {
                                 navigate('/profile');
@@ -69,7 +67,11 @@ function ProtectedRoute({children}) {
                     icon: <ProfileOutlined />,
                 },
                 {
-                    label: 'Logout',
+                    label: ( 
+                        <Link to="/login" onClick={() => {localStorage.removeItem(STORAGE_TOKEN);}}>
+                        Logout
+                        </Link>
+                    ),
                     icon: <LogoutOutlined />,
                 }
             ]

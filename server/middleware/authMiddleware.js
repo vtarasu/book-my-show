@@ -1,9 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res, next) => {
-    // console.log(req.headers);
     const token = req.headers.authorization.split(" ")[1]; // Extract token from Authorization header
-    console.log("Token received:", token);
     if(!token) {
         return res.status(401).json({ message: 'No token provided' });
     }

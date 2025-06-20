@@ -5,10 +5,8 @@ function Register() {
     const navigate = useNavigate();
 
     const onFinish = async (userData) => {
-        console.log('Registering user with data:', userData);
         try {
             const response = await registerUser(userData);
-            console.log('User registered successfully:', response);
             navigate('/login');
         } catch(error) {
             console.error('Error registering user:', error.message);

@@ -7,9 +7,7 @@ function Login() {
     const navigate = useNavigate();
     const onfinish = async(values) => {
         try {
-            console.log('Login data:', values);
             const response = await loginUser(values);
-            console.log('Login successful:', response);
             const jwtToken = response.data;
             localStorage.setItem(STORAGE_KEY, jwtToken);
             navigate('/home'); // Redirect to home page on successful login

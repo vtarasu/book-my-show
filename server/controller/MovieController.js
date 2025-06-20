@@ -1,6 +1,7 @@
 const movieModel = require('../models/Movie');
 
 const addMovie = async (req, res) => {
+    console.log("Adding new movie with data:", req.body);
     try {
         const { title, description, releaseDate, duration, genre, poster } = req.body;
         const newMovie = new movieModel({
