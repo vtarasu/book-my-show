@@ -19,10 +19,12 @@ const host = 'localhost';
 const USER_ROUTES = require('./routes/UserRoutes');
 const MOVIE_ROUTES = require('./routes/MovieRoutes');
 const THEATRE_ROUTES = require('./routes/TheatreRoutes');
+const SHOW_ROUTES = require('./routes/ShowRoutes');
 
 app.use('/api/users', USER_ROUTES);
 app.use('/api/movies', MOVIE_ROUTES);
 app.use('/api/theatres', THEATRE_ROUTES);
+app.use('/api/shows', SHOW_ROUTES);
 
 
 app.listen(PORT, host, () => {
