@@ -1,10 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const { addTheatre, getAllTheatres, getTheatresByOwner, updateTheatreById, deleteTheatreById } = require('../controller/TheatreController');
 
+const router = express.Router();
 router.post('/', addTheatre);
 router.get('/', getAllTheatres);
-router.put('/', updateTheatreById);
+router.put('/update', updateTheatreById);
 router.delete('/', deleteTheatreById);
 router.get('/getByOwner', getTheatresByOwner);
 

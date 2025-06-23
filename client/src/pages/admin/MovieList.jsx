@@ -93,7 +93,6 @@ function MovieList() {
     const getMoviesData = async () => {
         try {
             dispatch(showLoader());
-            console.log("Fetching movies data...");
             const response = await getAllMovies();
             const allMovies = response.data;
             setMovies(
