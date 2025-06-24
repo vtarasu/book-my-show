@@ -1,6 +1,5 @@
 import { Button, Table } from "antd";
 import { useState, useEffect } from "react";
-import { data } from "react-router-dom";
 import { updateTheatreStatus, getAllTheatres } from "../../api/theatre";
 import { useDispatch } from "react-redux"; 
 import { showLoader, hideLoader } from "../../redux/loaderslice";

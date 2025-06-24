@@ -1,4 +1,3 @@
-import { data } from "react-router-dom";
 import moment from "moment";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Table } from "antd";

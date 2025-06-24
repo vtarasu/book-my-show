@@ -19,3 +19,23 @@ export const updateTheatreStatus = async (payload) => {
         throw error;
     }
 }
+
+export const getTheatresByOwner = async (payload) => {
+    try {
+        const response = await axiosInstance.post('/api/theatres/getByOwner', payload);
+        return response.data;
+    } catch (error) {
+        console.error('Error occurred while fetching theatres for partner', error);
+        throw error;
+    }
+}
+
+export const deleteTheatres = async (payload) => {
+    try {
+        const response = await axiosInstance.post('/api/theatres/', payload);
+        return response.data;
+    } catch (error) {
+        console.error('Error occurred while fetching theatres for partner', error);
+        throw error;
+    }
+}

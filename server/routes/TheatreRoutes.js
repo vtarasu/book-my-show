@@ -6,6 +6,6 @@ router.post('/', addTheatre);
 router.get('/', getAllTheatres);
 router.put('/update', updateTheatreById);
 router.delete('/', deleteTheatreById);
-router.get('/getByOwner', getTheatresByOwner);
+router.post('/getByOwner', getTheatresByOwner);
 
 module.exports = router;

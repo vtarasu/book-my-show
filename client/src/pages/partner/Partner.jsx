@@ -1,10 +1,23 @@
+import TheatresModal from "./TheatresModal";
+import { Tabs } from "antd";
+import MovieList from "../admin/MovieList";
+import ThreatreList from "../admin/TheatreList";
+ 
 function Partner() {
+    const tabItem = [
+    {
+      key: "1",
+      label: "Theatres",
+      children: <TheatresModal />
+    }
+  ]
     return (
-        <div>
-            <h1>Partner Page</h1>
-            <p>This is the partner page where you can manage your partnership details.</p>
-            <p>Here you can view and update your partnership information, access resources, and more.</p>
-        </div>
+        <>
+            <div>
+                <h2> Partners Page </h2>
+                <Tabs items={tabItem}></Tabs>
+            </div>
+        </>
     );
 }
 
