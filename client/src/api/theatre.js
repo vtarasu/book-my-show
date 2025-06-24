@@ -32,7 +32,7 @@ export const getTheatresByOwner = async (payload) => {
 
 export const deleteTheatres = async (payload) => {
     try {
-        const response = await axiosInstance.post('/api/theatres/', payload);
+        const response = await axiosInstance.delete('/api/theatres/', {data : payload});
         return response.data;
     } catch (error) {
         console.error('Error occurred while fetching theatres for partner', error);

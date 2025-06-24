@@ -21,7 +21,10 @@ function DeleteTheatre({
         try {
             dispatch(showLoader());
             const theatreId = selectedTheatre._id;
-            const response = await deleteTheatres({theatreId: theatreId});
+            let values = {
+                theatreId : theatreId
+            };
+            const response = await deleteTheatres(values);
             getTheatresForPartner();
             dispatch(hideLoader());
         } catch(error) {

@@ -8,6 +8,7 @@ import { render } from "@testing-library/react";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import MovieForm from "../admin/MovieForm";
 import DeleteMovie from "../admin/DeleteMovie";
+import DeleteTheatre from "./DeleteTheatre";
 
 function TheatresModal() {
 
@@ -114,14 +115,14 @@ function TheatresModal() {
                 }
                 {
                     isDeleteModalOpen && (
-                        <DeleteMovie isDeleteModalOpen={isDeleteModalOpen}
+                        <DeleteTheatre isDeleteModalOpen={isDeleteModalOpen}
                         setIsDeleteModalOpen={setIsDeleteModalOpen}
                         selectedTheatre={selectedTheatre}
                         setSelectedTheatre={setSelectedTheatre}
                         getTheatresForPartner={getTheatresForPartner}
                         >
                             
-                        </DeleteMovie>
+                        </DeleteTheatre>
                     )
                 }
             </div>
