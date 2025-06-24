@@ -9,6 +9,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import MovieForm from "../admin/MovieForm";
 import DeleteMovie from "../admin/DeleteMovie";
 import DeleteTheatre from "./DeleteTheatre";
+import TheatreForm from "./TheatreForm";
 
 function TheatresModal() {
 
@@ -108,9 +109,15 @@ function TheatresModal() {
                 <Table dataSource={theatresList} columns={tableHeaders}></Table>
                 {
                     isModalOpen && (
-                        <MovieForm>
+                        <TheatreForm isModalOpen={isModalOpen}
+                        setIsModalOpen={setIsModalOpen}
+                        formType={formType}
+                        setFormType={setFormType}
+                        selectedTheatre={selectedTheatre}
+                        setSelectedTheatre={setSelectedTheatre}
+                        getTheatresForPartner={getTheatresForPartner}>
 
-                        </MovieForm>
+                        </TheatreForm>
                     )
                 }
                 {

@@ -39,3 +39,23 @@ export const deleteTheatres = async (payload) => {
         throw error;
     }
 }
+
+export const addTheatre = async (payload) => {
+    try {
+        const response = await axiosInstance.post('/api/theatres/', payload);
+        return response.data;
+    } catch (error) {
+        console.error('Error occurred while adding theatres for partner', error);
+        throw error;
+    }
+}
+
+export const updateTheatre = async (payload) => {
+    try {
+        const response = await axiosInstance.put('/api/theatres/update', payload);
+        return response.data;
+    } catch (error) {
+        console.error('Error occurred while adding theatres for partner', error);
+        throw error;
+    }
+}
